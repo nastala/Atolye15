@@ -46,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkText(String s) {
+        if(s.isEmpty() || s.replaceAll("\\s+", "").isEmpty()){
+            return;
+        }
+
         String[] words = s.split(" ");
         int[] result = new int[words.length];
         String[] resultText = new String[words.length];
@@ -71,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
             //Log.d(TAG, "CONTINUE FLAG");
 
             char[] letters = words[i].toCharArray();
+            if(letters.length < 1)
+                continue;
+
             int exactSameLetterCount = 0;
             boolean sesliExactSameLetterCheck = false;
             boolean sessizExactSameLetterCheck = false;
